@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ride Partner - MP's No. 1 Carpooling</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDUoVj4rbMh_6qeVF9LbSYctR_G-zbNYkM",
+            authDomain: "ridepartner-safarsaathi-9ccb2.firebaseapp.com",
+            projectId: "ridepartner-safarsaathi-9ccb2",
+            storageBucket: "ridepartner-safarsaathi-9ccb2.firebasestorage.app",
+            messagingSenderId: "79836817761",
+            appId: "1:79836817761:web:d59c72958158931868fd20"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            const path = window.location.pathname.split("/").pop();
+            const publicPages = ["login.html", "signup.html", "index.html", ""]; 
+            if (!user && !publicPages.includes(path)) {
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+
+    <nav class="navbar">
+        <h2 class="logo">Ride<span>Partner</span></h2>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="findride.html">Find Ride</a></li>
+            <li><a href="postride.html">Post Ride</a></li>
+            <li><a href="driver-verify.html" class="verify-link">Verify OTP</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li class="mobile-only"><a href="login.html" class="auth-m">Login</a></li>
+            <li class="mobile-only"><a href="signup.html" class="auth-m">Signup</a></li>
+        </ul>
+
+        <div class="auth-buttons desktop-only">
+            <a href="login.html" class="login">Login</a>
+            <a href="signup.html" class="signup-btn">Signup</a>
+        </div>
+    </nav>
+</header>
+
+<div class="mp-banner">
+    🚀 Serving **Madhya Pradesh**: Bhopal, Indore, Jabalpur & More!
+</div>
+
+<main>
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>MP's Own <br><span>Ride Share</span></h1>
+                <p>Ab Bhopal se Indore ho ya Chhindwara se Jabalpur, saste aur surakshit safar ke liye RidePartner chunein.</p>
+                <div class="hero-btns">
+                    <a href="findride.html" class="btn-primary">Find a Ride</a>
+                    <a href="postride.html" class="btn-secondary">Offer a Ride</a>
+                </div>
+            </div>
+            <div class="hero-img-box">
+                <img src="photo.jpeg" alt="MP Travel">
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feat-card">
+            <div class="icon">💸</div>
+            <h3>Save Money</h3>
+            <p>Indore-Bhopal commute par 60% tak bachat karein.</p>
+        </div>
+        <div class="feat-card">
+            <div class="icon">🏘️</div>
+            <h3>Local Trust</h3>
+            <p>MP ke verified logo ke saath travel karein.</p>
+        </div>
+        <div class="feat-card">
+            <div class="icon">🔒</div>
+            <h3>Safe & Legal</h3>
+            <p>MP Transport guidelines ke anusaar.</p>
+        </div>
+    </section>
+</main>
+
+<script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    }
+</script>
+
+</body>
+</html>
